@@ -1,0 +1,84 @@
+import "./styles.css";
+import PropTypes from "prop-types";
+import React, { useState, useEffect, useRef } from "react";
+export default function App() {
+  const Greeting = ({ name = "Raksh" }) => {
+    return <div>{name}</div>;
+  };
+  Greeting.defaultProps = {
+    name: "Guest",
+  };
+  Greeting.propTypes = {
+    name: PropTypes.string,
+  };
+
+  return (
+    <div className="App">
+      <Greeting name="Rakshita" />
+    </div>
+  );
+}
+//Simple form 
+import "./styles.css";
+import React, { useState, useEffect, useRef } from "react";
+export default function App() {
+  const [data, setData] = useState("");
+  const [formData, setState] = useState({
+    name: "",
+    Age: "",
+    email: "",
+  });
+  function handleSubmit(e) {
+    e.preventDefault();
+    setData(formData.email);
+    setState({
+      name: "",
+      Age: "",
+      email: "",
+    });
+  }
+  return (
+    <div className="App">
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name">name:</label>
+        <input
+          type="text"
+          id="name"
+          value={formData.name}
+          onChange={(e) => setState({ ...formData, name: e.target.value })}
+        />
+        <br />
+        <label htmlFor="age">Age:</label>
+        <input
+          type="number"
+          id="age"
+          onChange={(e) => setState({ ...formData, Age: e.target.value })}
+        />
+        <br />
+        <label htmlFor="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          onChange={(e) => setState({ ...formData, email: e.target.value })}
+        />
+        <br />
+        <button type="submit" onSubmit={(e) => handleSubmit(e)}>
+          submit
+        </button>
+        <div>{data}</div>
+      </form>
+    </div>
+  );
+}
+
+import "./styles.css";
+import React, { useState, useEffect, useRef } from "react";
+export default function App() {
+  const [state, setstate] = useState(0);
+  return (
+    <div className="App">
+      {state}
+      <button onClick={() => setstate(state + 1)}>click</button>
+    </div>
+  );
+}
